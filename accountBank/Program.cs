@@ -15,20 +15,39 @@ namespace accountBank
             //BankAccount account2 = new BankAccount("Xavier", 1000);
             //Console.WriteLine($"Accoount {account2.Number} was created for {account2.Owner} with {account2.Balance} initial balance.");
 
-            Console.WriteLine("Would you like to :");
-            Console.WriteLine("1. Make a deposit");
-            Console.WriteLine("2.Make a withdrawal");
-            string choice = Console.ReadLine();
-            if (choice == "1")
+            do
             {
-                Console.WriteLine("How much would you like to deposit?");
-                int deposit = int.Parse(Console.ReadLine());
-                Console.WriteLine("Would you like to add a commente?");
-                string comment = Console.ReadLine();
-                account.MakeDeposit(deposit, DateTime.Now, comment );
-                Console.WriteLine(account.Balance);
-                
-            }
+                Console.WriteLine("Would you like to :");
+                Console.WriteLine("1. Make a deposit");
+                Console.WriteLine("2. Make a withdrawal");
+                string choice = Console.ReadLine();
+                if (choice == "1")
+                {
+                    Console.WriteLine("How much would you like to deposit?");
+                    int deposit = int.Parse(Console.ReadLine());
+                    Console.WriteLine("Would you like to add a comment?");
+                    string comment = Console.ReadLine();
+                    account.MakeDeposit(deposit, DateTime.Now, comment);
+                    Console.WriteLine(account.Balance);
+                    
+                }
+                else if (choice == "2")
+                {
+                    Console.WriteLine("How much do you wish to withdraw?");
+                    int withdraw = int.Parse(Console.ReadLine());
+                    Console.WriteLine("Please add a comment");
+                    string comment = Console.ReadLine();
+                    account.MakeWithdrawal(withdraw, DateTime.Now, comment);
+                    Console.WriteLine(account.Balance);
+                    
+                }
+                else
+                {
+                    Console.WriteLine(account.GetAccountHistory());
+                    Console.WriteLine("Thank you for choosing Becode Bank.");
+                    break;
+                }
+            } while (true);
 
             /*account.MakeWithdrawal(500, DateTime.Now, "Rent payment");
             Console.WriteLine(account.Balance);
